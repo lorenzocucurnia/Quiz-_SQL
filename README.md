@@ -1,2 +1,2 @@
-# Quiz-_SQL
+# Quiz-SQL
 Solution of SQL Quiz 
