@@ -1,7 +1,7 @@
 --Per ciascuna auto Fiat, mostrare la targa dell'auto ed il numero di sinistri in cui è coinvolta
 
 --Creo una tabella temporanea
-CREATE TABLE LCdb.dbo.Temp(
+/*CREATE TABLE LCdb.dbo.Temp(
 	Targa nvarchar(7),
 	Num_Sinistri INT
 	)
@@ -32,3 +32,12 @@ GO
 
 --Elimino la tabella temporanea
 DROP TABLE LCdb.dbo.Temp
+GO
+*/
+
+SELECT Auto.Targa, Auto.Marca, COUNT(AC.Targa) AS Num_Sinistri
+FROM LCdb.dbo.Auto AS Auto
+INNER JOIN LCdb.dbo.AutoCoinvolte AS AC ON AC.Targa = Auto.Targa
+WHERE Auto.Marca LIKE 'Fiat%'
+GROUP BY Auto.Targa, Auto.Marca
+ORDER BY Auto.Targa;

@@ -10,7 +10,7 @@ GO
 
 --Rimuovo la colonna "Rivalutato" dalla tab AutoCoinvolte
 ALTER TABLE LCdb.dbo.AutoCoinvolte
-DROP COLUMN Rivalutato
+DROP COLUMN Rivalutato;
 GO
 
 --Testo la presenza del file .csv nella cartella Input
@@ -52,7 +52,9 @@ WHERE (
 AutoCoinvolte.CodS = Sin.CodS AND 
 AutoCoinvolte.targa = Auto.targa AND
 Auto.CodF = P.CodF AND Auto.CodAss = A.CodAss AND
-DATEDIFF(day, Sin.Data, '2021-01-20') > 0 AND A.Sede != P.Residenza
+--DATEDIFF(day, Sin.Data, '2021-01-20') > 0
+Sin.CodS <= 21-01-2021
+AND A.Sede != P.Residenza
 )
 GO
 --Aggiungo una colonna "rivalutato" con valori tutti NULL
